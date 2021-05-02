@@ -1,13 +1,13 @@
 from django import forms
-from .choices import EDUCATION_CHOICE
+from .models import SignUp
 
 
-class SignupForm1(forms.Form):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
-    email = forms.EmailField()
+class SignupForm1(forms.ModelForm):
+   class Meta:
+       model = SignUp
+       fields = ['first_name','last_name','email',]
 
-class SignupForm2(forms.Form):
-    password = forms.CharField(max_length=100)
-    password_comfirm = forms.CharField(max_length=100)
-    education_level = forms.ChoiceField(choices=EDUCATION_CHOICE)
+class SignupForm2(forms.ModelForm):
+        class Meta:
+            model = SignUp
+            fields = ['password','password_comfirm','education_level',]
